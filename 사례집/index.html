@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy 교육용 사례집</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --ink: #1d1d1b; --sub: #5e5d58; --line: #dcdad3;
+  --ok: #1f7a4a; --ok-bg: #e3f2e8; --warn: #8a5a00; --warn-bg: #fbf0d9; --na: #4a5a78; --na-bg: #e6ebf4;
+  --accent: #2d4fb3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121211; --card: #1b1b1a; --ink: #ecebe6; --sub: #a3a29c; --line: #2f2f2c;
+    --ok: #7fd3a1; --ok-bg: #173323; --warn: #f0c46b; --warn-bg: #3a2c10; --na: #a9bde6; --na-bg: #1f2738;
+    --accent: #8fa8ff;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121211; --card: #1b1b1a; --ink: #ecebe6; --sub: #a3a29c; --line: #2f2f2c;
+  --ok: #7fd3a1; --ok-bg: #173323; --warn: #f0c46b; --warn-bg: #3a2c10; --na: #a9bde6; --na-bg: #1f2738;
+  --accent: #8fa8ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.65 "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 40px 16px 80px; }
+header h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--sub); max-width: 760px; }
+.meta { font: 12px/1.5 ui-monospace, Consolas, monospace; color: var(--sub); margin-top: 10px; }
+h2 { font-size: 18px; margin: 40px 0 12px; }
+.summary { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 14px; }
+.summary th, .summary td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.summary th { font-weight: 600; color: var(--sub); font-size: 12px; }
+.summary tr:last-child td { border-bottom: 0; }
+.tablebox { overflow-x: auto; }
+.badge { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+.ok { color: var(--ok); background: var(--ok-bg); }
+.warn { color: var(--warn); background: var(--warn-bg); }
+.na { color: var(--na); background: var(--na-bg); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.card a.thumb { display: block; aspect-ratio: 4 / 3; background: var(--bg); overflow: hidden; }
+.card a.thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.body h3 { margin: 0; font-size: 17px; }
+.body h3 small { font: 12px ui-monospace, Consolas, monospace; color: var(--sub); margin-left: 6px; font-weight: 400; }
+.body p { margin: 0; color: var(--sub); font-size: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 11px ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; color: var(--sub); }
+.edu { font-size: 13.5px; border-left: 3px solid var(--accent); padding-left: 10px; color: var(--ink); }
+.links { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: auto; padding-top: 6px; font-size: 13.5px; }
+.links a { color: var(--accent); text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+.note { margin-top: 6px; font-size: 13px; color: var(--warn); }
+.ko { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 8px 10px; border-radius: 8px; background: var(--ok-bg); font-size: 13.5px; }
+.ko strong { color: var(--ok); font-weight: 600; }
+.ko a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.ko a:hover, .links a:hover { text-decoration: underline; }
+.links .label { color: var(--sub); }
+footer { margin-top: 48px; color: var(--sub); font-size: 13px; }
+footer li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Anatomy 교육용 사례집</h1>
+  <p>공식 예제 9종을 원본 그대로 재현하고(1단계), 각각을 수업용 한국어 교육판으로 발전시켰습니다(2단계). 교육판에서는 변수를 바꾸면 그림이 물리 모델대로 반응하고, 부품에 마우스를 올리면 한국어 설명이 나오며, 단계 가이드와 탐구 질문으로 원리를 따라갈 수 있습니다. 썸네일을 누르면 교육판이 열립니다.</p>
+  <div class="meta">원본: wheresryan22/anatomy @ 1482e84 (2026-10-18) · 빌드: Windows 11, Node v24.13.1, Chrome · 정리: 2026-11-04</div>
+</header>
+
+<h2>재현 결과 한눈에 보기</h2>
+<div class="tablebox">
+<table class="summary">
+  <thead><tr><th>예제</th><th>HTML 원본 일치</th><th>기하 감사</th><th>선 끝 검사</th><th>콘솔</th><th>PDF</th></tr></thead>
+  <tbody id="summary"></tbody>
+</table>
+</div>
+
+<h2>예제</h2>
+<div class="grid" id="grid"></div>
+
+<footer>
+  <strong>알아 둘 점</strong>
+  <ul>
+    <li>바이트가 다른 두 파일(랩터 엔진, 3D 다이얼 스트레스 페이지)은 숫자 끝자리 차이뿐이며 화면은 같습니다. Node 22로 다시 빌드해도 같은 차이가 나므로, 원본을 만든 macOS와 이 컴퓨터(Windows)의 수학 함수 계산 차이로 판단합니다.</li>
+    <li>PDF는 Windows 글꼴로 만들어져 원본(macOS 글꼴)과 바이트는 다르지만 쪽수는 같습니다. 일부 라벨의 자간이 넓어 보입니다.</li>
+    <li>그림 속 글자와 인쇄물은 모두 영어입니다. 수업에 쓰려면 한국어 설명을 곁들이거나, 2단계에서 한국어판으로 다시 만들어야 합니다.</li>
+    <li>시험대·반점판(React 예제)은 원본 HTML이 없어서 Vite로 띄워 화면과 콘솔로만 판정했습니다. 하네스는 C:\anatomy-work\react-harness에 있습니다.</li>
+  </ul>
+</footer>
+</div>
+
+<script>
+const E = [
+  { id: "dial-indicator", name: "다이얼 게이지", thumb: "desktop",
+    what: "캐리지를 밀어 게이지 블록 높이를 바늘 회전으로 읽습니다. 가장 작은 예제(약 300줄)입니다.",
+    tags: ["SVG", "측정"], edu: "기술 측정 단원, 공업 계열 정밀 측정: 직선 변위를 회전으로 확대해 읽는 원리",
+    res: ["ok", "같음"], audit: ["na", "해당 없음"], lines: ["ok", "0"], pdf: null },
+  { id: "desk-computer", name: "데스크 컴퓨터", thumb: "typed",
+    what: "키를 누르면 키가 내려가고 CRT에 글자가 찍힙니다. 전원을 끄면 화면이 선과 점으로 접힙니다.",
+    tags: ["SVG", "키보드 입력", "화면 속 화면"], edu: "정보 '컴퓨터의 구성': 입력에서 출력으로 이어지는 흐름",
+    res: ["ok", "같음"], audit: ["na", "해당 없음"], lines: ["ok", "0"], pdf: null },
+  { id: "push-button", name: "누름 버튼 회로", thumb: "pressed",
+    what: "버튼을 누르면 브리지가 접점에 닿아 회로가 닫히고 전구가 켜집니다(1.5 V, 0.30 A).",
+    tags: ["SVG", "인쇄 PDF"], edu: "중2 과학 '전기와 자기': 닫힌 회로와 열린 회로, 순간 스위치",
+    res: ["ok", "같음"], audit: ["na", "해당 없음"], lines: ["ok", "0"], pdf: [1, 1, 2] },
+  { id: "arcade-cabinet", name: "오락기 단면", thumb: "desktop",
+    what: "동전이 30° 경사로를 굴러 스위치 선을 밀고, 그 펄스 하나로 기계가 깨어나 자체 시험을 합니다.",
+    tags: ["SVG", "부품 243개", "케이블", "기하 감사", "인쇄 PDF"], edu: "역학(경사면 구름, 낙하), 스위치·릴레이 회로와 신호 전달",
+    res: ["ok", "같음"], audit: ["ok", "통과"], lines: ["ok", "0"], pdf: [1, 1, 2] },
+  { id: "raptor-engine", name: "랩터 2 로켓엔진", thumb: "fire3-mainstage",
+    what: "시험대에 매달린 로켓엔진이 11개 묶음으로 분해되고, 점화하면 WebGL 화염과 충격파가 납니다.",
+    tags: ["SVG+WebGL", "분해도", "lathe·tube", "기하 감사", "인쇄 PDF"], edu: "작용·반작용, 메탄 연소, 펌프-터빈-연소실-노즐의 에너지 흐름",
+    res: ["warn", "숫자 4개 끝자리"], audit: ["ok", "통과"], lines: ["ok", "0"], pdf: [1, 1, 3],
+    note: "라이트 테마의 화염은 붉게 번져 보입니다. 원본도 같으므로 수업에는 다크 테마를 권합니다." },
+  { id: "ripple-tank", name: "물결통", thumb: "desktop",
+    what: "두 접촉구가 물을 두드려 간섭무늬를 만듭니다. 진동수를 바꾸면 파장과 마디선 수가 실제 분산 관계대로 바뀝니다.",
+    tags: ["SVG+WebGL 2겹", "물리 모델", "빛·커스틱"], edu: "파동의 간섭·굴절: 마디선 수 2⌊d/λ + ½⌋를 예측하고 확인하는 탐구",
+    res: ["ok", "같음"], audit: ["na", "해당 없음"], lines: ["ok", "0"], pdf: null },
+  { id: "turning-dial", name: "3D 다이얼 자물쇠", thumb: "desktop",
+    what: "다이얼과 그 위의 로봇 손이 진짜 3D로 돕니다. 손가락이 관절로 움직이고, 포드가 떨어져 나갑니다.",
+    tags: ["3D 모드(베타)", "금속 재질", "WebGL LED"], edu: "회전 운동·강체와 상대 운동, 정보의 3차원 좌표 변환",
+    res: ["warn", "3개 같음, 스트레스 페이지 16바이트"], audit: ["warn", "기본 통과, 3D 경고 4건"], lines: ["ok", "0"], pdf: null,
+    note: "3D 회전 감사에서 케이블 끝과 손가락이 너무 가까운 각도(crowding) 4건이 나왔습니다. 4배 확대로는 결함이 보이지 않았고, 원저자 CI도 이 감사는 돌리지 않습니다.",
+    extra: [["검증판", "turning-dial-verify-light.html"], ["스트레스 페이지", "turning-stress-light.html"]] },
+  { id: "test-rig", name: "버튼 시험대", thumb: null, shotDark: "test-rig-dark.png", shotLight: "test-rig-light.png",
+    what: "스프링 캐리지 위 유리 버튼을 손가락 프로브가 누르고 당기며, 다이얼 게이지가 기울기를 읽습니다. 그림 품질의 기준이 되는 예제입니다.",
+    tags: ["React", "감쇠 스프링 모델"], edu: "탄성력, 훅의 법칙과 감쇠 진동",
+    res: ["na", "원본 없음, 렌더 정상"], audit: ["na", "해당 없음"], lines: ["na", "—"], pdf: null },
+  { id: "spot-plate", name: "반점판 유리 방울", thumb: null, shotDark: "spot-plate-dark.png", shotLight: "spot-plate-light.png",
+    what: "간격이 다른 유리 방울 6쌍이 merge 값보다 가까우면 하나로 합쳐집니다. 필러 게이지 날로 merge를 정합니다.",
+    tags: ["React", "거리장", "모양 변형"], edu: "표면장력·응집(그래픽 기법임을 함께 안내), 등고선과 거리 함수",
+    res: ["na", "원본 없음, 렌더 정상"], audit: ["na", "해당 없음"], lines: ["na", "—"], pdf: null },
+];
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const badge = ([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`;
+const href = (id, f) => encodeURI(`${id}/${f}`);
+
+document.getElementById("summary").innerHTML = E.map((e) => `
+  <tr><td><a href="#${e.id}" style="color:inherit">${esc(e.name)}</a></td>
+  <td>${badge(e.res)}</td><td>${badge(e.audit)}</td><td>${badge(e.lines)}</td>
+  <td>${badge(["ok", "깨끗함"])}</td>
+  <td>${e.pdf ? badge(["ok", e.pdf.join("·") + "쪽, 원본과 같음"]) : badge(["na", "—"])}</td></tr>`).join("");
+
+document.getElementById("grid").innerHTML = E.map((e) => {
+  const dark = e.shotDark ?? `dark-${e.thumb}.png`;
+  const light = e.shotLight ?? `light-${e.thumb}.png`;
+  const pdfs = e.pdf ? ["poster", "drawing", "detailed"].map((k) => `<a href="${href(e.id, `${e.id}-${k}-a4.pdf`)}">PDF ${k}</a>`).join("") : "";
+  const extra = (e.extra ?? []).map(([t, f]) => `<a href="${href(e.id, f)}">${esc(t)}</a>`).join("");
+  return `<article class="card" id="${e.id}">
+    <a class="thumb" href="${href(e.id, e.id + "-ko.html")}">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="${href(e.id, "shots/" + light)}">
+        <img src="${href(e.id, "shots/" + dark)}" alt="${esc(e.name)} 캡처" loading="lazy">
+      </picture>
+    </a>
+    <div class="body">
+      <h3>${esc(e.name)}<small>${e.id}</small></h3>
+      <p>${esc(e.what)}</p>
+      <div class="tags">${e.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="edu">${esc(e.edu)}</div>
+      ${e.note ? `<div class="note">${esc(e.note)}</div>` : ""}
+      <div class="ko">
+        <strong>교육판</strong>
+        <a href="${href(e.id, e.id + "-ko.html")}">다크</a>
+        <a href="${href(e.id, e.id + "-ko-light.html")}">라이트</a>
+        <a href="${href(e.id, "교육판-보고서.md")}">교육판 보고서</a>
+      </div>
+      <div class="links">
+        <span class="label">원본</span>
+        <a href="${href(e.id, e.id + ".html")}">다크</a>
+        <a href="${href(e.id, e.id + "-light.html")}">라이트</a>
+        ${pdfs}${extra}
+        <a href="${href(e.id, "보고서.md")}">보고서</a>
+        <a href="${href(e.id, "shots/")}">캡처 폴더</a>
+      </div>
+    </div>
+  </article>`;
+}).join("");
+</script>
+</body>
+</html>
