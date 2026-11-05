@@ -1,4 +1,18 @@
+# 공개 저장소에는 수업 자료만 올립니다. 제작 과정 기록은 이 폴더에만 둡니다.
 .claude/
+/PLAN*.md
+/작업기록.md
 desktop.ini
 Thumbs.db
 *.tmp
+
+# 사례집: 교육판 페이지, 썸네일, A4 PDF만 올립니다.
+/사례집/*/*
+!/사례집/*/*-ko.html
+!/사례집/*/*-ko-light.html
+!/사례집/*/thumb-dark.png
+!/사례집/*/thumb-light.png
+!/사례집/*/*-a4.pdf
+/사례집/*/*-poster-a4.pdf
+/사례집/*/*-drawing-a4.pdf
+/사례집/*/*-detailed-a4.pdf

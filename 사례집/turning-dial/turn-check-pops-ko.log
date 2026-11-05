@@ -1,6 +1,0 @@
-page 640×470 · live layers lock, dial, hand · theme light
-pops control (part 9 hidden for one frame): 1967 px flagged · fails as it should
-pops, first difference: 360 steps · 0 with a surviving region
-pops, second difference at 0.1° over a full turn: 0 cores of 6+ px · 7 small cores to read: 4.00° 1 px in 215.5,173.5,215.5,173.5 · 40.00° 1 px in 215.5,173.5,215.5,173.5 · 76.00° 1 px in 215.5,173.5,215.5,173.5 · 184.00° 1 px in 215.5,173.5,215.5,173.5 · 256.00° 3 px in 213.5,173.5,215.5,176 · 292.00° 2 px in 213.5,173.5,215.5,175.5 · 328.00° 1 px in 215.5,173.5,215.5,173.5
-console: clean
-turn check passed
