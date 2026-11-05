@@ -61,6 +61,9 @@ h2 { font-size: 18px; margin: 40px 0 12px; }
 .ko a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .ko a:hover, .links a:hover { text-decoration: underline; }
 .links .label { color: var(--sub); }
+.lead3 { margin: -4px 0 14px; color: var(--sub); max-width: 760px; }
+.card.wip { opacity: .6; }
+.card.wip .thumb { display: grid; place-items: center; color: var(--sub); font-size: 14px; }
 footer { margin-top: 48px; color: var(--sub); font-size: 13px; }
 footer li { margin: 4px 0; }
 </style>
@@ -69,7 +72,7 @@ footer li { margin: 4px 0; }
 <div class="wrap">
 <header>
   <h1>Anatomy 교육용 사례집</h1>
-  <p>공식 예제 9종을 원본 그대로 재현하고(1단계), 각각을 수업용 한국어 교육판으로 발전시켰습니다(2단계). 교육판에서는 변수를 바꾸면 그림이 물리 모델대로 반응하고, 부품에 마우스를 올리면 한국어 설명이 나오며, 단계 가이드와 탐구 질문으로 원리를 따라갈 수 있습니다. 썸네일을 누르면 교육판이 열립니다.</p>
+  <p>공식 예제 9종을 원본 그대로 재현하고(1단계), 각각을 수업용 한국어 교육판으로 발전시켰습니다(2단계). 교육판에서는 변수를 바꾸면 그림이 물리 모델대로 반응하고, 부품에 마우스를 올리면 한국어 설명이 나오며, 단계 가이드와 탐구 질문으로 원리를 따라갈 수 있습니다. 썸네일을 누르면 교육판이 열립니다. 3단계에서는 고등학교 기술 교과용 공학 사례 10종을 처음부터 새로 만들고 있습니다(<a href="#phase3" style="color:var(--accent)">아래</a>).</p>
   <div class="meta">원본: wheresryan22/anatomy @ 1482e84 (2026-10-18) · 빌드: Windows 11, Node v24.13.1, Chrome · 정리: 2026-11-04</div>
 </header>
 
@@ -83,6 +86,10 @@ footer li { margin: 4px 0; }
 
 <h2>예제</h2>
 <div class="grid" id="grid"></div>
+
+<h2 id="phase3">3단계: 기술교육 공학 사례</h2>
+<p class="lead3">고등학교 기술 교과(에너지, 수송, 제조, 건설, 정보통신, 로봇·제어)의 공학 원리를 다루는 새 해부도입니다. 원본 없이 처음부터 설계했고, 처음부터 한국어 교육판으로 만들었습니다. 완성되는 대로 이곳에 추가합니다.</p>
+<div class="grid" id="grid3"></div>
 
 <footer>
   <strong>알아 둘 점</strong>
@@ -183,6 +190,60 @@ document.getElementById("grid").innerHTML = E.map((e) => {
     </div>
   </article>`;
 }).join("");
+
+// 3단계: 기술교육 공학 사례 (done: false면 "제작 중" 카드로 표시합니다)
+const P3 = [
+  { id: "heat-pump", name: "히트펌프", area: "에너지", done: true,
+    what: "분리형 냉난방기를 절개해 냉매 순환을 보여 줍니다. 사방 밸브를 누르면 냉방과 난방이 뒤바뀌고, 냉매 색이 온도·압력 상태를 나타냅니다.",
+    tags: ["관(tube) 키트", "냉동 사이클", "기하 감사 통과"],
+    edu: "COP = Q고/W, 에너지 보존 Q고 = W + Q저: '전기보다 많은 열'이라는 오개념 다루기" },
+  { id: "wind-turbine", name: "풍력 발전기", area: "에너지", done: true,
+    what: "2 MW급 발전기의 나셀을 열어 기어박스와 발전기를 보여 줍니다. 풍속을 바꾸면 출력 곡선 위 운전점이 움직이고, 강풍에는 블레이드를 세웁니다.",
+    tags: ["출력 곡선", "끌어서 요 회전", "기하 감사 통과"],
+    edu: "P = ½ρAv³Cp와 베츠 한계 59.3 %, 증속비, 피치 제어로 과풍속 대응" },
+  { id: "servo-motor", name: "서보 모터", area: "로봇·제어", done: true, thumb: "ko-desktop",
+    what: "케이스를 잘라 DC 모터, 4단 감속 기어, 위치 센서(가변저항), 제어 기판을 보여 줍니다. 펄스 폭으로 목표 각도를 정하면 되먹임 제어로 바늘이 따라가고, 응답 그래프가 함께 그려집니다.",
+    tags: ["응답 그래프", "기어 세트 교체", "기하 감사 통과"],
+    edu: "PWM 펄스 폭 → 각도, P 제어의 오버슈트와 처짐(정상상태 오차), 감속비에 따른 토크와 속도 교환" },
+  { id: "quadcopter", name: "쿼드콥터 드론", area: "로봇·수송" },
+  { id: "seismic-tower", name: "내진·면진 고층 건물", area: "건설", done: true, thumb: "ko-desktop",
+    what: "10층 철골 건물 모형에 면진 고무받침과 옥상 동조 질량 감쇠기(TMD)를 달았습니다. 땅의 진동수를 바꾸면 공진 곡선의 점을 따라 건물의 흔들림이 커지거나 줄어듭니다.",
+    tags: ["공진 곡선", "진동수 훑기", "기하 감사 통과"],
+    edu: "고유진동수 f = (1/2π)√(k/m), 공진 증폭률, 면진과 TMD가 공진을 누르는 원리" },
+  { id: "excavator", name: "유압 굴착기", area: "기계·건설장비" },
+  { id: "fdm-printer", name: "FDM 3D 프린터", area: "제조" },
+  { id: "four-stroke-engine", name: "4행정 엔진", area: "수송·동력" },
+  { id: "fiber-link", name: "광섬유 통신", area: "정보통신", done: true, thumb: "ko-desktop",
+    what: "글자가 ASCII 8비트 빛 펄스로 바뀌어 광섬유 릴과 휨 맨드릴을 지나 수신기에서 다시 글자로 돌아옵니다. 입사각과 굴절률을 바꾸면 전반사가 깨져 빛이 새어 나갑니다.",
+    tags: ["전반사", "링크 예산", "기하 감사 통과"],
+    edu: "임계각 θc = arcsin(n₂/n₁), 개구수와 수용각, 감쇠·휨 손실과 수신 감도" },
+  { id: "differential", name: "차동 기어", area: "수송·기계요소" },
+];
+document.getElementById("grid3").innerHTML = P3.map((e) => e.done ? `<article class="card" id="${e.id}">
+    <a class="thumb" href="${href(e.id, e.id + "-ko.html")}">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="${href(e.id, `shots/${e.thumb ?? "ko-default"}-light.png`)}">
+        <img src="${href(e.id, `shots/${e.thumb ?? "ko-default"}-dark.png`)}" alt="${esc(e.name)} 캡처" loading="lazy">
+      </picture>
+    </a>
+    <div class="body">
+      <h3>${esc(e.name)}<small>${e.id}</small></h3>
+      <p>${esc(e.what)}</p>
+      <div class="tags"><span class="tag">${esc(e.area)}</span>${e.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="edu">${esc(e.edu)}</div>
+      <div class="ko">
+        <strong>교육판</strong>
+        <a href="${href(e.id, e.id + "-ko.html")}">다크</a>
+        <a href="${href(e.id, e.id + "-ko-light.html")}">라이트</a>
+        <a href="${href(e.id, e.id + "-a4.pdf")}">A4 PDF</a>
+        <a href="${href(e.id, "보고서.md")}">보고서</a>
+      </div>
+    </div>
+  </article>` : `<article class="card wip" id="${e.id}">
+    <div class="thumb">제작 중</div>
+    <div class="body"><h3>${esc(e.name)}<small>${e.id}</small></h3>
+      <div class="tags"><span class="tag">${esc(e.area)}</span></div></div>
+  </article>`).join("");
 </script>
 </body>
 </html>
